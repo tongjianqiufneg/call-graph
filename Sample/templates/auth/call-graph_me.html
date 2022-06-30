@@ -1,0 +1,67 @@
+{% extends '../content.html' %}
+
+{% block header %}
+    Call Graph - Get Me in EF.CN
+{% endblock %}
+
+{% block text %}
+    {#    {% for k,v in results.items %}#}
+    {#        <div>    {{ k }}====>{{ v }}</div>#}
+    {##}
+    {#    {% endfor %}#}
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"> 账号信息 </h3>
+            </div>
+            <div class="panel-body">
+                <form method="post" action="#">
+                    {% csrf_token %}
+
+                    <div class="form-group">
+                        <label>邮箱账号：</label>
+                        <div>
+                            <input type="text" class="form-control" placeholder="姓名" name="name"
+                                   value="{{ results.mail }}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>职称：</label>
+                        <div>
+                            <input type="text" class="form-control" placeholder="姓名" name="name"
+                                   value="{{ results.jobTitle }}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>办公室：</label>
+                        <div>
+                            <input type="text" class="form-control" placeholder="姓名" name="name"
+                                   value="{{ results.officeLocation }}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>个人电话号码：</label>
+                        <div>
+                            <input type="text" class="form-control" placeholder="姓名" name="name"
+                                   value="{{ results.mobilePhone }}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>直属经理：</label>
+                        <div>
+                            <input type="text" class="form-control" placeholder="姓名" name="name"
+                                   value="{{ manager }}">
+                        </div>
+                    </div>
+                    {#                    <button type="submit" class="btn btn-primary">提 交</button>#}
+                </form>
+            </div>
+        </div>
+    </div>
+
+    </form>
+{% endblock %}

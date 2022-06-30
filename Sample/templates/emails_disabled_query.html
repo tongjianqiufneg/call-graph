@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block title %}
+    用户展示
+{% endblock %}
+
+{% block body %}
+    <div>
+        <div class="container">
+            <div class="panel panel-default">
+                <!-- Default panel contents -->
+{#                <div class="panel-heading">#}
+{#                    <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>#}
+{#                    查询用户邮箱账号状态#}
+{#                </div>#}
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <h2> <div style="color: red">禁用邮箱账号</div></h2>
+{#                    <div class="form-group">#}
+{#                        <label>选择要查找的账号字段</label>#}
+{#                        <select class="form-control" name="user_keyword">#}
+{#                            <option value="accountEnabled">邮箱账号状态（accountEnabled）</option>#}
+{#                            <option value="jobTitle">职称（jobTitle）</option>#}
+{#                        </select>#}
+{#                    </div>#}
+                    <div>
+                        <label>输入邮箱账号，多个账号用回车换行</label>
+                        <textarea class="form-control" rows="25" placeholder="lemon.shen@ef.cn" name="emails"
+                                  style="resize: none"></textarea>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-primary" style="margin: 10px 10px;width: 100px">提  交</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}
