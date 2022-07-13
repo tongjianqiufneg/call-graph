@@ -217,7 +217,7 @@ Open the project in your IDE to configure the code.
 
 - Navigate to [http://localhost:8000](http://localhost:8000) in your browser (**Don't use** use 127.0.0.1)
 
-![Experience](./ReadmeFiles/app.png)
+![Experience](./ReadmeFiles/EFIA.png)
 
 ## We'd love your feedback!
 
