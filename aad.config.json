@@ -5,13 +5,13 @@
         "framework": "DJANGO"
     },
     "client": {
-        "client_id": "{enter-your-client-id-here}",
-        "client_credential": "{enter-your-client-secret-here}",
-        "authority": "https://login.microsoftonline.com/{enter-your-tenant-id-here}"
+        "client_id": "9c7f8ba9-77b8-410e-92b1-28b172fefe9788",
+        "client_credential": "aqJ8Q~hKJfsPFumaB1tGUUt~aijlwwaZOz46lcwu88",
+        "authority": "https://login.microsoftonline.com/5a55c1d7-5172-4e0c-a795-c75b055ca05588"
     },
     "auth_request": {
         "redirect_uri": null,
-        "scopes": ["User.ReadBasic.All"],
+        "scopes": [],
         "response_type": "code"
     },
     "flask": null,

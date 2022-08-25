@@ -58,7 +58,7 @@ def emails_query(request):
     else:
         emails = request.POST.get("emails")
         user_keyword = request.POST.get("user_keyword")
-        print(emails, user_keyword)
+        # print(emails, user_keyword)
         emails = emails.replace("\r", "")
         emails = emails.split("\n")
         import requests
@@ -139,10 +139,61 @@ def emails_disabled(request):
                 user['UPN']=email
                 user['status']='成功'
                 users.append(user)
-                print('----->', response.text, response.status_code)
+                # print('----->', response.text, response.status_code)
             else:
                 error_code = response.json().get("error").get("code")
                 user['UPN']=email
                 user['status']=error_code
                 users.append(user)
     return render(request,"emails_disabled_resp.html",{"users":users})
+#更新manager
+@ms_identity_web.login_required
+def update_manager(request):
+    if request.method == "GET":
+        return render(request, "update_manager_query.html")
+    else:
+        manager=request.POST.get("manager")
+        emails = request.POST.get("emails")
+        # 预留关键字选项
+        # user_keyword = request.POST.get("user_keyword")
+        emails = emails.replace("\r", "")
+        emails = emails.split("\n")
+        ms_identity_web.acquire_token_silently()
+        # 获取接入token
+        authZ = f'Bearer {ms_identity_web.id_data._access_token}'
+        # print("-------->", authZ)
+        # 构造请求头
+        headers = {'Authorization': authZ}
+
+        import requests
+        import json
+        users=[]
+        for email in emails:
+            user={}
+            url = "https://graph.microsoft.com/v1.0/users/{}/manager/$ref".format(email)
+
+            payload = json.dumps({
+                "@odata.id": "https://graph.microsoft.com/v1.0/users/{}".format(manager)
+            })
+            headers = {
+                'Authorization': authZ,
+                'Content-Type': 'application/json'
+            }
+
+            response = requests.request("PUT", url, headers=headers, data=payload)
+            if response.status_code == 204:
+                user['UPN']=email
+                user['status']='Yes'
+                users.append(user)
+                # print('----->', response.text, response.status_code)
+            # print(response.text)
+            else:
+                print('No----->', response.text, response.status_code)
+                # error_code = 'No'
+                error_code = response.json().get("error").get("code")
+                user['UPN'] = email
+                user['status'] = error_code
+                users.append(user)
+
+    # return HttpResponse("Server系统内部错误")
+    return render(request,"update_manager_resp.html",{"users":users})

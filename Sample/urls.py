@@ -36,4 +36,5 @@ urlpatterns = [
     path('emails_status/', views.emails_status),
     path('emails_query/', views.emails_query),
     path('emails_disabled/', views.emails_disabled),
+    path('update_manager/', views.update_manager),
 ]
