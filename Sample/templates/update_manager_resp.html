@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block title %}
+    用户展示
+{% endblock %}
+
+{% block body %}
+    <div>
+        <div class="container">
+            <div class="panel panel-default">
+                <!-- Default panel contents -->
+                <div class="panel-heading">
+                    <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                   <h3>用户Manager更新结果</h3>
+                </div>
+                <!-- Table -->
+                <table class="table table-bordered  table-hover">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>邮箱</th>
+                        <th>是否修改完成（成功）Yes</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for user in users %}
+                            <tr>
+                                <th>{{ forloop.counter }}</th>
+                                <td>{{ user.UPN }}</td>
+                                <td>{{ user.status }}</td>
+                            </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+    </div>
+{% endblock %}

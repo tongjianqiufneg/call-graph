@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block title %}
+    用户展示
+{% endblock %}
+
+{% block body %}
+    <div>
+        <div class="container">
+            <div class="panel panel-default">
+                <!-- Default panel contents -->
+{#                <div class="panel-heading">#}
+{#                    <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>#}
+{#                    查询用户邮箱账号状态#}
+{#                </div>#}
+                <form action="" method="post">
+                    {% csrf_token %}
+
+                    <div class="form-group">
+                        <label>Manager邮箱账号：</label>
+                        <div>
+                            <input type="text" class="form-control" placeholder="邮箱名" name="manager">
+                        </div>
+                    </div>
+                    <div>
+                        <label>输入需要修改Manager的邮箱账号，多个账号用回车换行（每次提交邮箱账号3000个以内）</label>
+                        <textarea class="form-control" rows="25" placeholder="lemon.shen@ef.cn" name="emails"
+                                  style="resize: none"></textarea>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-primary" style="margin: 10px 10px;width: 100px">提  交</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}
